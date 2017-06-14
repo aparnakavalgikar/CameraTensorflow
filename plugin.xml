@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="CameraTensorflow" version="0.0.1" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <name>CameraTensorflow</name>
+    <js-module name="CameraTensorflow" src="www/CameraTensorflow.js">
+        <clobbers target="CameraTensorflow" />
+    </js-module>
+
+    <platform name="android">
+
+        <config-file parent="/*" target="res/xml/config.xml">
+            <feature name="CameraTensorflow">
+                <param name="android-package" value="camera.tensorflow.CameraTensorflow" /></feature>
+        </config-file>
+
+        <config-file target="AndroidManifest.xml" parent="/manifest/application">
+            <activity android:label="DetectorActivity" android:name="org.tensorflow.demo.DetectorActivity"></activity>
+        </config-file>
+        <config-file parent="/*" target="AndroidManifest.xml"></config-file>
+        <framework src="src/android/cameratensorflow.gradle" custom="true" type="gradleReference" />
+        <resource-file src="tensorflow_libs/android-debug.aar" target="libs/android-debug.aar" />
+        <source-file src="src/android/CameraTensorflow.java" target-dir="src/camera/tensorflow/CameraTensorflow" />
+    </platform>
+</plugin>
